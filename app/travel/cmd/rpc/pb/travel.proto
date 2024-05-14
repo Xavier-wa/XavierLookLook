@@ -1,0 +1,356 @@
+syntax = "proto3";
+
+option go_package ="./pb";
+
+package pb;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------每一间民宿--------------------------------
+message Homestay {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  string title = 4; //标题
+  string subTitle = 5; //副标题
+  string banner = 6; //轮播图，第一张封面
+  string info = 7; //介绍
+  int64 peopleNum = 8; //容纳人的数量
+  int64 homestayBusinessId = 9; //民宿店铺id
+  int64 userId = 10; //房东id，冗余字段
+  int64 rowState = 11; //0:下架 1:上架
+  int64 rowType = 12; //售卖类型0：按房间出售 1:按人次出售
+  string foodInfo = 13; //餐食标准
+  int64 foodPrice = 14; //餐食价格（分）
+  int64 homestayPrice = 15; //民宿价格（分）
+  int64 marketHomestayPrice = 16; //民宿市场价格（分）
+}
+
+message AddHomestayReq {
+  string title = 1; //标题
+  string subTitle = 2; //副标题
+  string banner = 3; //轮播图，第一张封面
+  string info = 4; //介绍
+  int64 peopleNum = 5; //容纳人的数量
+  int64 homestayBusinessId = 6; //民宿店铺id
+  int64 userId = 7; //房东id，冗余字段
+  int64 rowState = 8; //0:下架 1:上架
+  int64 rowType = 9; //售卖类型0：按房间出售 1:按人次出售
+  string foodInfo = 10; //餐食标准
+  int64 foodPrice = 11; //餐食价格（分）
+  int64 homestayPrice = 12; //民宿价格（分）
+  int64 marketHomestayPrice = 13; //民宿市场价格（分）
+}
+
+message AddHomestayResp {
+}
+
+message UpdateHomestayReq {
+  int64 id = 1; //id
+  string title = 2; //标题
+  string subTitle = 3; //副标题
+  string banner = 4; //轮播图，第一张封面
+  string info = 5; //介绍
+  int64 peopleNum = 6; //容纳人的数量
+  int64 homestayBusinessId = 7; //民宿店铺id
+  int64 userId = 8; //房东id，冗余字段
+  int64 rowState = 9; //0:下架 1:上架
+  int64 rowType = 10; //售卖类型0：按房间出售 1:按人次出售
+  string foodInfo = 11; //餐食标准
+  int64 foodPrice = 12; //餐食价格（分）
+  int64 homestayPrice = 13; //民宿价格（分）
+  int64 marketHomestayPrice = 14; //民宿市场价格（分）
+}
+
+message UpdateHomestayResp {
+}
+
+message DelHomestayReq {
+  int64 id = 1; //id
+}
+
+message DelHomestayResp {
+}
+
+message GetHomestayByIdReq {
+  int64 id = 1; //id
+}
+
+message GetHomestayByIdResp {
+  Homestay homestay = 1; //homestay
+}
+
+message SearchHomestayReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  string title = 6; //标题
+  string subTitle = 7; //副标题
+  string banner = 8; //轮播图，第一张封面
+  string info = 9; //介绍
+  int64 peopleNum = 10; //容纳人的数量
+  int64 homestayBusinessId = 11; //民宿店铺id
+  int64 userId = 12; //房东id，冗余字段
+  int64 rowState = 13; //0:下架 1:上架
+  int64 rowType = 14; //售卖类型0：按房间出售 1:按人次出售
+  string foodInfo = 15; //餐食标准
+  int64 foodPrice = 16; //餐食价格（分）
+  int64 homestayPrice = 17; //民宿价格（分）
+  int64 marketHomestayPrice = 18; //民宿市场价格（分）
+}
+
+message SearchHomestayResp {
+  repeated Homestay homestay = 1; //homestay
+}
+
+//--------------------------------每一间民宿--------------------------------
+message HomestayActivity {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  string rowType = 4; //活动类型
+  int64 dataId = 5; //业务表id（id跟随活动类型走）
+  int64 rowStatus = 6; //0:下架 1:上架
+}
+
+message AddHomestayActivityReq {
+  string rowType = 1; //活动类型
+  int64 dataId = 2; //业务表id（id跟随活动类型走）
+  int64 rowStatus = 3; //0:下架 1:上架
+}
+
+message AddHomestayActivityResp {
+}
+
+message UpdateHomestayActivityReq {
+  int64 id = 1; //id
+  string rowType = 2; //活动类型
+  int64 dataId = 3; //业务表id（id跟随活动类型走）
+  int64 rowStatus = 4; //0:下架 1:上架
+}
+
+message UpdateHomestayActivityResp {
+}
+
+message DelHomestayActivityReq {
+  int64 id = 1; //id
+}
+
+message DelHomestayActivityResp {
+}
+
+message GetHomestayActivityByIdReq {
+  int64 id = 1; //id
+}
+
+message GetHomestayActivityByIdResp {
+  HomestayActivity homestayActivity = 1; //homestayActivity
+}
+
+message SearchHomestayActivityReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  string rowType = 6; //活动类型
+  int64 dataId = 7; //业务表id（id跟随活动类型走）
+  int64 rowStatus = 8; //0:下架 1:上架
+}
+
+message SearchHomestayActivityResp {
+  repeated HomestayActivity homestayActivity = 1; //homestayActivity
+}
+
+//--------------------------------民宿店铺--------------------------------
+message HomestayBusiness {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  string title = 4; //店铺名称
+  int64 userId = 5; //关联的用户id
+  string info = 6; //店铺介绍
+  string bossInfo = 7; //房东介绍
+  string licenseFron = 8; //营业执照正面
+  string licenseBack = 9; //营业执照背面
+  int64 rowState = 10; //0:禁止营业 1:正常营业
+  double star = 11; //店铺整体评价，冗余
+  string tags = 12; //每个店家一个标签，自己编辑
+  string cover = 13; //封面图
+  string headerImg = 14; //店招门头图片
+}
+
+message AddHomestayBusinessReq {
+  string title = 1; //店铺名称
+  int64 userId = 2; //关联的用户id
+  string info = 3; //店铺介绍
+  string bossInfo = 4; //房东介绍
+  string licenseFron = 5; //营业执照正面
+  string licenseBack = 6; //营业执照背面
+  int64 rowState = 7; //0:禁止营业 1:正常营业
+  double star = 8; //店铺整体评价，冗余
+  string tags = 9; //每个店家一个标签，自己编辑
+  string cover = 10; //封面图
+  string headerImg = 11; //店招门头图片
+}
+
+message AddHomestayBusinessResp {
+}
+
+message UpdateHomestayBusinessReq {
+  int64 id = 1; //id
+  string title = 2; //店铺名称
+  int64 userId = 3; //关联的用户id
+  string info = 4; //店铺介绍
+  string bossInfo = 5; //房东介绍
+  string licenseFron = 6; //营业执照正面
+  string licenseBack = 7; //营业执照背面
+  int64 rowState = 8; //0:禁止营业 1:正常营业
+  double star = 9; //店铺整体评价，冗余
+  string tags = 10; //每个店家一个标签，自己编辑
+  string cover = 11; //封面图
+  string headerImg = 12; //店招门头图片
+}
+
+message UpdateHomestayBusinessResp {
+}
+
+message DelHomestayBusinessReq {
+  int64 id = 1; //id
+}
+
+message DelHomestayBusinessResp {
+}
+
+message GetHomestayBusinessByIdReq {
+  int64 id = 1; //id
+}
+
+message GetHomestayBusinessByIdResp {
+  HomestayBusiness homestayBusiness = 1; //homestayBusiness
+}
+
+message SearchHomestayBusinessReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  string title = 6; //店铺名称
+  int64 userId = 7; //关联的用户id
+  string info = 8; //店铺介绍
+  string bossInfo = 9; //房东介绍
+  string licenseFron = 10; //营业执照正面
+  string licenseBack = 11; //营业执照背面
+  int64 rowState = 12; //0:禁止营业 1:正常营业
+  double star = 13; //店铺整体评价，冗余
+  string tags = 14; //每个店家一个标签，自己编辑
+  string cover = 15; //封面图
+  string headerImg = 16; //店招门头图片
+}
+
+message SearchHomestayBusinessResp {
+  repeated HomestayBusiness homestayBusiness = 1; //homestayBusiness
+}
+
+//--------------------------------民宿评价--------------------------------
+message HomestayComment {
+  int64 id = 1; //id
+  int64 createTime = 2; //createTime
+  int64 updateTime = 3; //updateTime
+  int64 homestayId = 4; //民宿id
+  int64 userId = 5; //用户id
+  string content = 6; //评论内容
+  string star = 7; //星星数,多个维度
+}
+
+message AddHomestayCommentReq {
+  int64 homestayId = 1; //民宿id
+  int64 userId = 2; //用户id
+  string content = 3; //评论内容
+  string star = 4; //星星数,多个维度
+}
+
+message AddHomestayCommentResp {
+}
+
+message UpdateHomestayCommentReq {
+  int64 id = 1; //id
+  int64 homestayId = 2; //民宿id
+  int64 userId = 3; //用户id
+  string content = 4; //评论内容
+  string star = 5; //星星数,多个维度
+}
+
+message UpdateHomestayCommentResp {
+}
+
+message DelHomestayCommentReq {
+  int64 id = 1; //id
+}
+
+message DelHomestayCommentResp {
+}
+
+message GetHomestayCommentByIdReq {
+  int64 id = 1; //id
+}
+
+message GetHomestayCommentByIdResp {
+  HomestayComment homestayComment = 1; //homestayComment
+}
+
+message SearchHomestayCommentReq {
+  int64 page = 1; //page
+  int64 limit = 2; //limit
+  int64 id = 3; //id
+  int64 createTime = 4; //createTime
+  int64 updateTime = 5; //updateTime
+  int64 homestayId = 6; //民宿id
+  int64 userId = 7; //用户id
+  string content = 8; //评论内容
+  string star = 9; //星星数,多个维度
+}
+
+message SearchHomestayCommentResp {
+  repeated HomestayComment homestayComment = 1; //homestayComment
+}
+
+
+
+// ------------------------------------ 
+// Rpc Func
+// ------------------------------------ 
+
+service travel{ 
+
+	 //-----------------------每一间民宿----------------------- 
+	 rpc AddHomestay(AddHomestayReq) returns (AddHomestayResp); 
+	 rpc UpdateHomestay(UpdateHomestayReq) returns (UpdateHomestayResp); 
+	 rpc DelHomestay(DelHomestayReq) returns (DelHomestayResp); 
+	 rpc GetHomestayById(GetHomestayByIdReq) returns (GetHomestayByIdResp); 
+	 rpc SearchHomestay(SearchHomestayReq) returns (SearchHomestayResp); 
+	 //-----------------------每一间民宿----------------------- 
+	 rpc AddHomestayActivity(AddHomestayActivityReq) returns (AddHomestayActivityResp); 
+	 rpc UpdateHomestayActivity(UpdateHomestayActivityReq) returns (UpdateHomestayActivityResp); 
+	 rpc DelHomestayActivity(DelHomestayActivityReq) returns (DelHomestayActivityResp); 
+	 rpc GetHomestayActivityById(GetHomestayActivityByIdReq) returns (GetHomestayActivityByIdResp); 
+	 rpc SearchHomestayActivity(SearchHomestayActivityReq) returns (SearchHomestayActivityResp); 
+	 //-----------------------民宿店铺----------------------- 
+	 rpc AddHomestayBusiness(AddHomestayBusinessReq) returns (AddHomestayBusinessResp); 
+	 rpc UpdateHomestayBusiness(UpdateHomestayBusinessReq) returns (UpdateHomestayBusinessResp); 
+	 rpc DelHomestayBusiness(DelHomestayBusinessReq) returns (DelHomestayBusinessResp); 
+	 rpc GetHomestayBusinessById(GetHomestayBusinessByIdReq) returns (GetHomestayBusinessByIdResp); 
+	 rpc SearchHomestayBusiness(SearchHomestayBusinessReq) returns (SearchHomestayBusinessResp); 
+	 //-----------------------民宿评价----------------------- 
+	 rpc AddHomestayComment(AddHomestayCommentReq) returns (AddHomestayCommentResp); 
+	 rpc UpdateHomestayComment(UpdateHomestayCommentReq) returns (UpdateHomestayCommentResp); 
+	 rpc DelHomestayComment(DelHomestayCommentReq) returns (DelHomestayCommentResp); 
+	 rpc GetHomestayCommentById(GetHomestayCommentByIdReq) returns (GetHomestayCommentByIdResp); 
+	 rpc SearchHomestayComment(SearchHomestayCommentReq) returns (SearchHomestayCommentResp); 
+
+}
