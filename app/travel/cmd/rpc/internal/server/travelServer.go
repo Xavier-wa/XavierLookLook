@@ -22,106 +22,42 @@ func NewTravelServer(svcCtx *svc.ServiceContext) *TravelServer {
 	}
 }
 
-// -----------------------每一间民宿-----------------------
-func (s *TravelServer) AddHomestay(ctx context.Context, in *pb.AddHomestayReq) (*pb.AddHomestayResp, error) {
-	l := logic.NewAddHomestayLogic(ctx, s.svcCtx)
-	return l.AddHomestay(in)
+func (s *TravelServer) HomestayList(ctx context.Context, in *pb.HomestayListReq) (*pb.HomestayListResp, error) {
+	l := logic.NewHomestayListLogic(ctx, s.svcCtx)
+	return l.HomestayList(in)
 }
 
-func (s *TravelServer) UpdateHomestay(ctx context.Context, in *pb.UpdateHomestayReq) (*pb.UpdateHomestayResp, error) {
-	l := logic.NewUpdateHomestayLogic(ctx, s.svcCtx)
-	return l.UpdateHomestay(in)
+func (s *TravelServer) BusinessList(ctx context.Context, in *pb.BusinessListReq) (*pb.BusinessListResp, error) {
+	l := logic.NewBusinessListLogic(ctx, s.svcCtx)
+	return l.BusinessList(in)
 }
 
-func (s *TravelServer) DelHomestay(ctx context.Context, in *pb.DelHomestayReq) (*pb.DelHomestayResp, error) {
-	l := logic.NewDelHomestayLogic(ctx, s.svcCtx)
-	return l.DelHomestay(in)
+func (s *TravelServer) GuessList(ctx context.Context, in *pb.GuessListReq) (*pb.GoodBossResp, error) {
+	l := logic.NewGuessListLogic(ctx, s.svcCtx)
+	return l.GuessList(in)
 }
 
-func (s *TravelServer) GetHomestayById(ctx context.Context, in *pb.GetHomestayByIdReq) (*pb.GetHomestayByIdResp, error) {
-	l := logic.NewGetHomestayByIdLogic(ctx, s.svcCtx)
-	return l.GetHomestayById(in)
+func (s *TravelServer) HomestayDetail(ctx context.Context, in *pb.HomestayDetailReq) (*pb.HomestayDetailResp, error) {
+	l := logic.NewHomestayDetailLogic(ctx, s.svcCtx)
+	return l.HomestayDetail(in)
 }
 
-func (s *TravelServer) SearchHomestay(ctx context.Context, in *pb.SearchHomestayReq) (*pb.SearchHomestayResp, error) {
-	l := logic.NewSearchHomestayLogic(ctx, s.svcCtx)
-	return l.SearchHomestay(in)
+func (s *TravelServer) GoodBoss(ctx context.Context, in *pb.GoodBossReq) (*pb.GoodBossResp, error) {
+	l := logic.NewGoodBossLogic(ctx, s.svcCtx)
+	return l.GoodBoss(in)
 }
 
-// -----------------------每一间民宿-----------------------
-func (s *TravelServer) AddHomestayActivity(ctx context.Context, in *pb.AddHomestayActivityReq) (*pb.AddHomestayActivityResp, error) {
-	l := logic.NewAddHomestayActivityLogic(ctx, s.svcCtx)
-	return l.AddHomestayActivity(in)
+func (s *TravelServer) HomestayBussinessList(ctx context.Context, in *pb.HomestayBussinessListReq) (*pb.HomestayBussinessListResp, error) {
+	l := logic.NewHomestayBussinessListLogic(ctx, s.svcCtx)
+	return l.HomestayBussinessList(in)
 }
 
-func (s *TravelServer) UpdateHomestayActivity(ctx context.Context, in *pb.UpdateHomestayActivityReq) (*pb.UpdateHomestayActivityResp, error) {
-	l := logic.NewUpdateHomestayActivityLogic(ctx, s.svcCtx)
-	return l.UpdateHomestayActivity(in)
+func (s *TravelServer) HomestayBussinessDetail(ctx context.Context, in *pb.HomestayDetailReq) (*pb.HomestayDetailResp, error) {
+	l := logic.NewHomestayBussinessDetailLogic(ctx, s.svcCtx)
+	return l.HomestayBussinessDetail(in)
 }
 
-func (s *TravelServer) DelHomestayActivity(ctx context.Context, in *pb.DelHomestayActivityReq) (*pb.DelHomestayActivityResp, error) {
-	l := logic.NewDelHomestayActivityLogic(ctx, s.svcCtx)
-	return l.DelHomestayActivity(in)
-}
-
-func (s *TravelServer) GetHomestayActivityById(ctx context.Context, in *pb.GetHomestayActivityByIdReq) (*pb.GetHomestayActivityByIdResp, error) {
-	l := logic.NewGetHomestayActivityByIdLogic(ctx, s.svcCtx)
-	return l.GetHomestayActivityById(in)
-}
-
-func (s *TravelServer) SearchHomestayActivity(ctx context.Context, in *pb.SearchHomestayActivityReq) (*pb.SearchHomestayActivityResp, error) {
-	l := logic.NewSearchHomestayActivityLogic(ctx, s.svcCtx)
-	return l.SearchHomestayActivity(in)
-}
-
-// -----------------------民宿店铺-----------------------
-func (s *TravelServer) AddHomestayBusiness(ctx context.Context, in *pb.AddHomestayBusinessReq) (*pb.AddHomestayBusinessResp, error) {
-	l := logic.NewAddHomestayBusinessLogic(ctx, s.svcCtx)
-	return l.AddHomestayBusiness(in)
-}
-
-func (s *TravelServer) UpdateHomestayBusiness(ctx context.Context, in *pb.UpdateHomestayBusinessReq) (*pb.UpdateHomestayBusinessResp, error) {
-	l := logic.NewUpdateHomestayBusinessLogic(ctx, s.svcCtx)
-	return l.UpdateHomestayBusiness(in)
-}
-
-func (s *TravelServer) DelHomestayBusiness(ctx context.Context, in *pb.DelHomestayBusinessReq) (*pb.DelHomestayBusinessResp, error) {
-	l := logic.NewDelHomestayBusinessLogic(ctx, s.svcCtx)
-	return l.DelHomestayBusiness(in)
-}
-
-func (s *TravelServer) GetHomestayBusinessById(ctx context.Context, in *pb.GetHomestayBusinessByIdReq) (*pb.GetHomestayBusinessByIdResp, error) {
-	l := logic.NewGetHomestayBusinessByIdLogic(ctx, s.svcCtx)
-	return l.GetHomestayBusinessById(in)
-}
-
-func (s *TravelServer) SearchHomestayBusiness(ctx context.Context, in *pb.SearchHomestayBusinessReq) (*pb.SearchHomestayBusinessResp, error) {
-	l := logic.NewSearchHomestayBusinessLogic(ctx, s.svcCtx)
-	return l.SearchHomestayBusiness(in)
-}
-
-// -----------------------民宿评价-----------------------
-func (s *TravelServer) AddHomestayComment(ctx context.Context, in *pb.AddHomestayCommentReq) (*pb.AddHomestayCommentResp, error) {
-	l := logic.NewAddHomestayCommentLogic(ctx, s.svcCtx)
-	return l.AddHomestayComment(in)
-}
-
-func (s *TravelServer) UpdateHomestayComment(ctx context.Context, in *pb.UpdateHomestayCommentReq) (*pb.UpdateHomestayCommentResp, error) {
-	l := logic.NewUpdateHomestayCommentLogic(ctx, s.svcCtx)
-	return l.UpdateHomestayComment(in)
-}
-
-func (s *TravelServer) DelHomestayComment(ctx context.Context, in *pb.DelHomestayCommentReq) (*pb.DelHomestayCommentResp, error) {
-	l := logic.NewDelHomestayCommentLogic(ctx, s.svcCtx)
-	return l.DelHomestayComment(in)
-}
-
-func (s *TravelServer) GetHomestayCommentById(ctx context.Context, in *pb.GetHomestayCommentByIdReq) (*pb.GetHomestayCommentByIdResp, error) {
-	l := logic.NewGetHomestayCommentByIdLogic(ctx, s.svcCtx)
-	return l.GetHomestayCommentById(in)
-}
-
-func (s *TravelServer) SearchHomestayComment(ctx context.Context, in *pb.SearchHomestayCommentReq) (*pb.SearchHomestayCommentResp, error) {
-	l := logic.NewSearchHomestayCommentLogic(ctx, s.svcCtx)
-	return l.SearchHomestayComment(in)
+func (s *TravelServer) CommentList(ctx context.Context, in *pb.CommentListReq) (*pb.CommentListResp, error) {
+	l := logic.NewCommentListLogic(ctx, s.svcCtx)
+	return l.CommentList(in)
 }

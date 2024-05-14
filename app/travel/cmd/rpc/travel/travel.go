@@ -13,76 +13,37 @@ import (
 )
 
 type (
-	AddHomestayActivityReq      = pb.AddHomestayActivityReq
-	AddHomestayActivityResp     = pb.AddHomestayActivityResp
-	AddHomestayBusinessReq      = pb.AddHomestayBusinessReq
-	AddHomestayBusinessResp     = pb.AddHomestayBusinessResp
-	AddHomestayCommentReq       = pb.AddHomestayCommentReq
-	AddHomestayCommentResp      = pb.AddHomestayCommentResp
-	AddHomestayReq              = pb.AddHomestayReq
-	AddHomestayResp             = pb.AddHomestayResp
-	DelHomestayActivityReq      = pb.DelHomestayActivityReq
-	DelHomestayActivityResp     = pb.DelHomestayActivityResp
-	DelHomestayBusinessReq      = pb.DelHomestayBusinessReq
-	DelHomestayBusinessResp     = pb.DelHomestayBusinessResp
-	DelHomestayCommentReq       = pb.DelHomestayCommentReq
-	DelHomestayCommentResp      = pb.DelHomestayCommentResp
-	DelHomestayReq              = pb.DelHomestayReq
-	DelHomestayResp             = pb.DelHomestayResp
-	GetHomestayActivityByIdReq  = pb.GetHomestayActivityByIdReq
-	GetHomestayActivityByIdResp = pb.GetHomestayActivityByIdResp
-	GetHomestayBusinessByIdReq  = pb.GetHomestayBusinessByIdReq
-	GetHomestayBusinessByIdResp = pb.GetHomestayBusinessByIdResp
-	GetHomestayByIdReq          = pb.GetHomestayByIdReq
-	GetHomestayByIdResp         = pb.GetHomestayByIdResp
-	GetHomestayCommentByIdReq   = pb.GetHomestayCommentByIdReq
-	GetHomestayCommentByIdResp  = pb.GetHomestayCommentByIdResp
+	BusinessListReq             = pb.BusinessListReq
+	BusinessListResp            = pb.BusinessListResp
+	CommentListReq              = pb.CommentListReq
+	CommentListResp             = pb.CommentListResp
+	GoodBossReq                 = pb.GoodBossReq
+	GoodBossResp                = pb.GoodBossResp
+	GuessListReq                = pb.GuessListReq
+	GuessListResp               = pb.GuessListResp
 	Homestay                    = pb.Homestay
-	HomestayActivity            = pb.HomestayActivity
 	HomestayBusiness            = pb.HomestayBusiness
+	HomestayBusinessBoss        = pb.HomestayBusinessBoss
+	HomestayBusinessListInfo    = pb.HomestayBusinessListInfo
+	HomestayBussinessDetailReq  = pb.HomestayBussinessDetailReq
+	HomestayBussinessDetailResp = pb.HomestayBussinessDetailResp
+	HomestayBussinessListReq    = pb.HomestayBussinessListReq
+	HomestayBussinessListResp   = pb.HomestayBussinessListResp
 	HomestayComment             = pb.HomestayComment
-	SearchHomestayActivityReq   = pb.SearchHomestayActivityReq
-	SearchHomestayActivityResp  = pb.SearchHomestayActivityResp
-	SearchHomestayBusinessReq   = pb.SearchHomestayBusinessReq
-	SearchHomestayBusinessResp  = pb.SearchHomestayBusinessResp
-	SearchHomestayCommentReq    = pb.SearchHomestayCommentReq
-	SearchHomestayCommentResp   = pb.SearchHomestayCommentResp
-	SearchHomestayReq           = pb.SearchHomestayReq
-	SearchHomestayResp          = pb.SearchHomestayResp
-	UpdateHomestayActivityReq   = pb.UpdateHomestayActivityReq
-	UpdateHomestayActivityResp  = pb.UpdateHomestayActivityResp
-	UpdateHomestayBusinessReq   = pb.UpdateHomestayBusinessReq
-	UpdateHomestayBusinessResp  = pb.UpdateHomestayBusinessResp
-	UpdateHomestayCommentReq    = pb.UpdateHomestayCommentReq
-	UpdateHomestayCommentResp   = pb.UpdateHomestayCommentResp
-	UpdateHomestayReq           = pb.UpdateHomestayReq
-	UpdateHomestayResp          = pb.UpdateHomestayResp
+	HomestayDetailReq           = pb.HomestayDetailReq
+	HomestayDetailResp          = pb.HomestayDetailResp
+	HomestayListReq             = pb.HomestayListReq
+	HomestayListResp            = pb.HomestayListResp
 
 	Travel interface {
-		// -----------------------每一间民宿-----------------------
-		AddHomestay(ctx context.Context, in *AddHomestayReq, opts ...grpc.CallOption) (*AddHomestayResp, error)
-		UpdateHomestay(ctx context.Context, in *UpdateHomestayReq, opts ...grpc.CallOption) (*UpdateHomestayResp, error)
-		DelHomestay(ctx context.Context, in *DelHomestayReq, opts ...grpc.CallOption) (*DelHomestayResp, error)
-		GetHomestayById(ctx context.Context, in *GetHomestayByIdReq, opts ...grpc.CallOption) (*GetHomestayByIdResp, error)
-		SearchHomestay(ctx context.Context, in *SearchHomestayReq, opts ...grpc.CallOption) (*SearchHomestayResp, error)
-		// -----------------------每一间民宿-----------------------
-		AddHomestayActivity(ctx context.Context, in *AddHomestayActivityReq, opts ...grpc.CallOption) (*AddHomestayActivityResp, error)
-		UpdateHomestayActivity(ctx context.Context, in *UpdateHomestayActivityReq, opts ...grpc.CallOption) (*UpdateHomestayActivityResp, error)
-		DelHomestayActivity(ctx context.Context, in *DelHomestayActivityReq, opts ...grpc.CallOption) (*DelHomestayActivityResp, error)
-		GetHomestayActivityById(ctx context.Context, in *GetHomestayActivityByIdReq, opts ...grpc.CallOption) (*GetHomestayActivityByIdResp, error)
-		SearchHomestayActivity(ctx context.Context, in *SearchHomestayActivityReq, opts ...grpc.CallOption) (*SearchHomestayActivityResp, error)
-		// -----------------------民宿店铺-----------------------
-		AddHomestayBusiness(ctx context.Context, in *AddHomestayBusinessReq, opts ...grpc.CallOption) (*AddHomestayBusinessResp, error)
-		UpdateHomestayBusiness(ctx context.Context, in *UpdateHomestayBusinessReq, opts ...grpc.CallOption) (*UpdateHomestayBusinessResp, error)
-		DelHomestayBusiness(ctx context.Context, in *DelHomestayBusinessReq, opts ...grpc.CallOption) (*DelHomestayBusinessResp, error)
-		GetHomestayBusinessById(ctx context.Context, in *GetHomestayBusinessByIdReq, opts ...grpc.CallOption) (*GetHomestayBusinessByIdResp, error)
-		SearchHomestayBusiness(ctx context.Context, in *SearchHomestayBusinessReq, opts ...grpc.CallOption) (*SearchHomestayBusinessResp, error)
-		// -----------------------民宿评价-----------------------
-		AddHomestayComment(ctx context.Context, in *AddHomestayCommentReq, opts ...grpc.CallOption) (*AddHomestayCommentResp, error)
-		UpdateHomestayComment(ctx context.Context, in *UpdateHomestayCommentReq, opts ...grpc.CallOption) (*UpdateHomestayCommentResp, error)
-		DelHomestayComment(ctx context.Context, in *DelHomestayCommentReq, opts ...grpc.CallOption) (*DelHomestayCommentResp, error)
-		GetHomestayCommentById(ctx context.Context, in *GetHomestayCommentByIdReq, opts ...grpc.CallOption) (*GetHomestayCommentByIdResp, error)
-		SearchHomestayComment(ctx context.Context, in *SearchHomestayCommentReq, opts ...grpc.CallOption) (*SearchHomestayCommentResp, error)
+		HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error)
+		BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error)
+		GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+		HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
+		GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+		HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error)
+		HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
+		CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error)
 	}
 
 	defaultTravel struct {
@@ -96,106 +57,42 @@ func NewTravel(cli zrpc.Client) Travel {
 	}
 }
 
-// -----------------------每一间民宿-----------------------
-func (m *defaultTravel) AddHomestay(ctx context.Context, in *AddHomestayReq, opts ...grpc.CallOption) (*AddHomestayResp, error) {
+func (m *defaultTravel) HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.AddHomestay(ctx, in, opts...)
+	return client.HomestayList(ctx, in, opts...)
 }
 
-func (m *defaultTravel) UpdateHomestay(ctx context.Context, in *UpdateHomestayReq, opts ...grpc.CallOption) (*UpdateHomestayResp, error) {
+func (m *defaultTravel) BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.UpdateHomestay(ctx, in, opts...)
+	return client.BusinessList(ctx, in, opts...)
 }
 
-func (m *defaultTravel) DelHomestay(ctx context.Context, in *DelHomestayReq, opts ...grpc.CallOption) (*DelHomestayResp, error) {
+func (m *defaultTravel) GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.DelHomestay(ctx, in, opts...)
+	return client.GuessList(ctx, in, opts...)
 }
 
-func (m *defaultTravel) GetHomestayById(ctx context.Context, in *GetHomestayByIdReq, opts ...grpc.CallOption) (*GetHomestayByIdResp, error) {
+func (m *defaultTravel) HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GetHomestayById(ctx, in, opts...)
+	return client.HomestayDetail(ctx, in, opts...)
 }
 
-func (m *defaultTravel) SearchHomestay(ctx context.Context, in *SearchHomestayReq, opts ...grpc.CallOption) (*SearchHomestayResp, error) {
+func (m *defaultTravel) GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.SearchHomestay(ctx, in, opts...)
+	return client.GoodBoss(ctx, in, opts...)
 }
 
-// -----------------------每一间民宿-----------------------
-func (m *defaultTravel) AddHomestayActivity(ctx context.Context, in *AddHomestayActivityReq, opts ...grpc.CallOption) (*AddHomestayActivityResp, error) {
+func (m *defaultTravel) HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.AddHomestayActivity(ctx, in, opts...)
+	return client.HomestayBussinessList(ctx, in, opts...)
 }
 
-func (m *defaultTravel) UpdateHomestayActivity(ctx context.Context, in *UpdateHomestayActivityReq, opts ...grpc.CallOption) (*UpdateHomestayActivityResp, error) {
+func (m *defaultTravel) HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.UpdateHomestayActivity(ctx, in, opts...)
+	return client.HomestayBussinessDetail(ctx, in, opts...)
 }
 
-func (m *defaultTravel) DelHomestayActivity(ctx context.Context, in *DelHomestayActivityReq, opts ...grpc.CallOption) (*DelHomestayActivityResp, error) {
+func (m *defaultTravel) CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
-	return client.DelHomestayActivity(ctx, in, opts...)
-}
-
-func (m *defaultTravel) GetHomestayActivityById(ctx context.Context, in *GetHomestayActivityByIdReq, opts ...grpc.CallOption) (*GetHomestayActivityByIdResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GetHomestayActivityById(ctx, in, opts...)
-}
-
-func (m *defaultTravel) SearchHomestayActivity(ctx context.Context, in *SearchHomestayActivityReq, opts ...grpc.CallOption) (*SearchHomestayActivityResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.SearchHomestayActivity(ctx, in, opts...)
-}
-
-// -----------------------民宿店铺-----------------------
-func (m *defaultTravel) AddHomestayBusiness(ctx context.Context, in *AddHomestayBusinessReq, opts ...grpc.CallOption) (*AddHomestayBusinessResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.AddHomestayBusiness(ctx, in, opts...)
-}
-
-func (m *defaultTravel) UpdateHomestayBusiness(ctx context.Context, in *UpdateHomestayBusinessReq, opts ...grpc.CallOption) (*UpdateHomestayBusinessResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.UpdateHomestayBusiness(ctx, in, opts...)
-}
-
-func (m *defaultTravel) DelHomestayBusiness(ctx context.Context, in *DelHomestayBusinessReq, opts ...grpc.CallOption) (*DelHomestayBusinessResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.DelHomestayBusiness(ctx, in, opts...)
-}
-
-func (m *defaultTravel) GetHomestayBusinessById(ctx context.Context, in *GetHomestayBusinessByIdReq, opts ...grpc.CallOption) (*GetHomestayBusinessByIdResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GetHomestayBusinessById(ctx, in, opts...)
-}
-
-func (m *defaultTravel) SearchHomestayBusiness(ctx context.Context, in *SearchHomestayBusinessReq, opts ...grpc.CallOption) (*SearchHomestayBusinessResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.SearchHomestayBusiness(ctx, in, opts...)
-}
-
-// -----------------------民宿评价-----------------------
-func (m *defaultTravel) AddHomestayComment(ctx context.Context, in *AddHomestayCommentReq, opts ...grpc.CallOption) (*AddHomestayCommentResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.AddHomestayComment(ctx, in, opts...)
-}
-
-func (m *defaultTravel) UpdateHomestayComment(ctx context.Context, in *UpdateHomestayCommentReq, opts ...grpc.CallOption) (*UpdateHomestayCommentResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.UpdateHomestayComment(ctx, in, opts...)
-}
-
-func (m *defaultTravel) DelHomestayComment(ctx context.Context, in *DelHomestayCommentReq, opts ...grpc.CallOption) (*DelHomestayCommentResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.DelHomestayComment(ctx, in, opts...)
-}
-
-func (m *defaultTravel) GetHomestayCommentById(ctx context.Context, in *GetHomestayCommentByIdReq, opts ...grpc.CallOption) (*GetHomestayCommentByIdResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GetHomestayCommentById(ctx, in, opts...)
-}
-
-func (m *defaultTravel) SearchHomestayComment(ctx context.Context, in *SearchHomestayCommentReq, opts ...grpc.CallOption) (*SearchHomestayCommentResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.SearchHomestayComment(ctx, in, opts...)
+	return client.CommentList(ctx, in, opts...)
 }

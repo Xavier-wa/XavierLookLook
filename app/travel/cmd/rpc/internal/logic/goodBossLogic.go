@@ -9,22 +9,22 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type DelHomestayBusinessLogic struct {
+type GoodBossLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewDelHomestayBusinessLogic(ctx context.Context, svcCtx *svc.ServiceContext) *DelHomestayBusinessLogic {
-	return &DelHomestayBusinessLogic{
+func NewGoodBossLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GoodBossLogic {
+	return &GoodBossLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *DelHomestayBusinessLogic) DelHomestayBusiness(in *pb.DelHomestayBusinessReq) (*pb.DelHomestayBusinessResp, error) {
+func (l *GoodBossLogic) GoodBoss(in *pb.GoodBossReq) (*pb.GoodBossResp, error) {
 	// todo: add your logic here and delete this line
 
-	return &pb.DelHomestayBusinessResp{}, nil
+	return &pb.GoodBossResp{}, nil
 }

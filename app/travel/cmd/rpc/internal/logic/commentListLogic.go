@@ -9,22 +9,22 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type UpdateHomestayLogic struct {
+type CommentListLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewUpdateHomestayLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UpdateHomestayLogic {
-	return &UpdateHomestayLogic{
+func NewCommentListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CommentListLogic {
+	return &CommentListLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *UpdateHomestayLogic) UpdateHomestay(in *pb.UpdateHomestayReq) (*pb.UpdateHomestayResp, error) {
+func (l *CommentListLogic) CommentList(in *pb.CommentListReq) (*pb.CommentListResp, error) {
 	// todo: add your logic here and delete this line
 
-	return &pb.UpdateHomestayResp{}, nil
+	return &pb.CommentListResp{}, nil
 }

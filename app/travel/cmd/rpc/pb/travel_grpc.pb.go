@@ -19,56 +19,28 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Travel_AddHomestay_FullMethodName             = "/pb.travel/AddHomestay"
-	Travel_UpdateHomestay_FullMethodName          = "/pb.travel/UpdateHomestay"
-	Travel_DelHomestay_FullMethodName             = "/pb.travel/DelHomestay"
-	Travel_GetHomestayById_FullMethodName         = "/pb.travel/GetHomestayById"
-	Travel_SearchHomestay_FullMethodName          = "/pb.travel/SearchHomestay"
-	Travel_AddHomestayActivity_FullMethodName     = "/pb.travel/AddHomestayActivity"
-	Travel_UpdateHomestayActivity_FullMethodName  = "/pb.travel/UpdateHomestayActivity"
-	Travel_DelHomestayActivity_FullMethodName     = "/pb.travel/DelHomestayActivity"
-	Travel_GetHomestayActivityById_FullMethodName = "/pb.travel/GetHomestayActivityById"
-	Travel_SearchHomestayActivity_FullMethodName  = "/pb.travel/SearchHomestayActivity"
-	Travel_AddHomestayBusiness_FullMethodName     = "/pb.travel/AddHomestayBusiness"
-	Travel_UpdateHomestayBusiness_FullMethodName  = "/pb.travel/UpdateHomestayBusiness"
-	Travel_DelHomestayBusiness_FullMethodName     = "/pb.travel/DelHomestayBusiness"
-	Travel_GetHomestayBusinessById_FullMethodName = "/pb.travel/GetHomestayBusinessById"
-	Travel_SearchHomestayBusiness_FullMethodName  = "/pb.travel/SearchHomestayBusiness"
-	Travel_AddHomestayComment_FullMethodName      = "/pb.travel/AddHomestayComment"
-	Travel_UpdateHomestayComment_FullMethodName   = "/pb.travel/UpdateHomestayComment"
-	Travel_DelHomestayComment_FullMethodName      = "/pb.travel/DelHomestayComment"
-	Travel_GetHomestayCommentById_FullMethodName  = "/pb.travel/GetHomestayCommentById"
-	Travel_SearchHomestayComment_FullMethodName   = "/pb.travel/SearchHomestayComment"
+	Travel_HomestayList_FullMethodName            = "/pb.travel/homestayList"
+	Travel_BusinessList_FullMethodName            = "/pb.travel/businessList"
+	Travel_GuessList_FullMethodName               = "/pb.travel/guessList"
+	Travel_HomestayDetail_FullMethodName          = "/pb.travel/homestayDetail"
+	Travel_GoodBoss_FullMethodName                = "/pb.travel/goodBoss"
+	Travel_HomestayBussinessList_FullMethodName   = "/pb.travel/homestayBussinessList"
+	Travel_HomestayBussinessDetail_FullMethodName = "/pb.travel/homestayBussinessDetail"
+	Travel_CommentList_FullMethodName             = "/pb.travel/commentList"
 )
 
 // TravelClient is the client API for Travel service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TravelClient interface {
-	// -----------------------每一间民宿-----------------------
-	AddHomestay(ctx context.Context, in *AddHomestayReq, opts ...grpc.CallOption) (*AddHomestayResp, error)
-	UpdateHomestay(ctx context.Context, in *UpdateHomestayReq, opts ...grpc.CallOption) (*UpdateHomestayResp, error)
-	DelHomestay(ctx context.Context, in *DelHomestayReq, opts ...grpc.CallOption) (*DelHomestayResp, error)
-	GetHomestayById(ctx context.Context, in *GetHomestayByIdReq, opts ...grpc.CallOption) (*GetHomestayByIdResp, error)
-	SearchHomestay(ctx context.Context, in *SearchHomestayReq, opts ...grpc.CallOption) (*SearchHomestayResp, error)
-	// -----------------------每一间民宿-----------------------
-	AddHomestayActivity(ctx context.Context, in *AddHomestayActivityReq, opts ...grpc.CallOption) (*AddHomestayActivityResp, error)
-	UpdateHomestayActivity(ctx context.Context, in *UpdateHomestayActivityReq, opts ...grpc.CallOption) (*UpdateHomestayActivityResp, error)
-	DelHomestayActivity(ctx context.Context, in *DelHomestayActivityReq, opts ...grpc.CallOption) (*DelHomestayActivityResp, error)
-	GetHomestayActivityById(ctx context.Context, in *GetHomestayActivityByIdReq, opts ...grpc.CallOption) (*GetHomestayActivityByIdResp, error)
-	SearchHomestayActivity(ctx context.Context, in *SearchHomestayActivityReq, opts ...grpc.CallOption) (*SearchHomestayActivityResp, error)
-	// -----------------------民宿店铺-----------------------
-	AddHomestayBusiness(ctx context.Context, in *AddHomestayBusinessReq, opts ...grpc.CallOption) (*AddHomestayBusinessResp, error)
-	UpdateHomestayBusiness(ctx context.Context, in *UpdateHomestayBusinessReq, opts ...grpc.CallOption) (*UpdateHomestayBusinessResp, error)
-	DelHomestayBusiness(ctx context.Context, in *DelHomestayBusinessReq, opts ...grpc.CallOption) (*DelHomestayBusinessResp, error)
-	GetHomestayBusinessById(ctx context.Context, in *GetHomestayBusinessByIdReq, opts ...grpc.CallOption) (*GetHomestayBusinessByIdResp, error)
-	SearchHomestayBusiness(ctx context.Context, in *SearchHomestayBusinessReq, opts ...grpc.CallOption) (*SearchHomestayBusinessResp, error)
-	// -----------------------民宿评价-----------------------
-	AddHomestayComment(ctx context.Context, in *AddHomestayCommentReq, opts ...grpc.CallOption) (*AddHomestayCommentResp, error)
-	UpdateHomestayComment(ctx context.Context, in *UpdateHomestayCommentReq, opts ...grpc.CallOption) (*UpdateHomestayCommentResp, error)
-	DelHomestayComment(ctx context.Context, in *DelHomestayCommentReq, opts ...grpc.CallOption) (*DelHomestayCommentResp, error)
-	GetHomestayCommentById(ctx context.Context, in *GetHomestayCommentByIdReq, opts ...grpc.CallOption) (*GetHomestayCommentByIdResp, error)
-	SearchHomestayComment(ctx context.Context, in *SearchHomestayCommentReq, opts ...grpc.CallOption) (*SearchHomestayCommentResp, error)
+	HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error)
+	BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error)
+	GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+	HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
+	GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+	HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error)
+	HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
+	CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error)
 }
 
 type travelClient struct {
@@ -79,180 +51,72 @@ func NewTravelClient(cc grpc.ClientConnInterface) TravelClient {
 	return &travelClient{cc}
 }
 
-func (c *travelClient) AddHomestay(ctx context.Context, in *AddHomestayReq, opts ...grpc.CallOption) (*AddHomestayResp, error) {
-	out := new(AddHomestayResp)
-	err := c.cc.Invoke(ctx, Travel_AddHomestay_FullMethodName, in, out, opts...)
+func (c *travelClient) HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error) {
+	out := new(HomestayListResp)
+	err := c.cc.Invoke(ctx, Travel_HomestayList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) UpdateHomestay(ctx context.Context, in *UpdateHomestayReq, opts ...grpc.CallOption) (*UpdateHomestayResp, error) {
-	out := new(UpdateHomestayResp)
-	err := c.cc.Invoke(ctx, Travel_UpdateHomestay_FullMethodName, in, out, opts...)
+func (c *travelClient) BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error) {
+	out := new(BusinessListResp)
+	err := c.cc.Invoke(ctx, Travel_BusinessList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) DelHomestay(ctx context.Context, in *DelHomestayReq, opts ...grpc.CallOption) (*DelHomestayResp, error) {
-	out := new(DelHomestayResp)
-	err := c.cc.Invoke(ctx, Travel_DelHomestay_FullMethodName, in, out, opts...)
+func (c *travelClient) GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
+	out := new(GoodBossResp)
+	err := c.cc.Invoke(ctx, Travel_GuessList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) GetHomestayById(ctx context.Context, in *GetHomestayByIdReq, opts ...grpc.CallOption) (*GetHomestayByIdResp, error) {
-	out := new(GetHomestayByIdResp)
-	err := c.cc.Invoke(ctx, Travel_GetHomestayById_FullMethodName, in, out, opts...)
+func (c *travelClient) HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
+	out := new(HomestayDetailResp)
+	err := c.cc.Invoke(ctx, Travel_HomestayDetail_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) SearchHomestay(ctx context.Context, in *SearchHomestayReq, opts ...grpc.CallOption) (*SearchHomestayResp, error) {
-	out := new(SearchHomestayResp)
-	err := c.cc.Invoke(ctx, Travel_SearchHomestay_FullMethodName, in, out, opts...)
+func (c *travelClient) GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
+	out := new(GoodBossResp)
+	err := c.cc.Invoke(ctx, Travel_GoodBoss_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) AddHomestayActivity(ctx context.Context, in *AddHomestayActivityReq, opts ...grpc.CallOption) (*AddHomestayActivityResp, error) {
-	out := new(AddHomestayActivityResp)
-	err := c.cc.Invoke(ctx, Travel_AddHomestayActivity_FullMethodName, in, out, opts...)
+func (c *travelClient) HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error) {
+	out := new(HomestayBussinessListResp)
+	err := c.cc.Invoke(ctx, Travel_HomestayBussinessList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) UpdateHomestayActivity(ctx context.Context, in *UpdateHomestayActivityReq, opts ...grpc.CallOption) (*UpdateHomestayActivityResp, error) {
-	out := new(UpdateHomestayActivityResp)
-	err := c.cc.Invoke(ctx, Travel_UpdateHomestayActivity_FullMethodName, in, out, opts...)
+func (c *travelClient) HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
+	out := new(HomestayDetailResp)
+	err := c.cc.Invoke(ctx, Travel_HomestayBussinessDetail_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *travelClient) DelHomestayActivity(ctx context.Context, in *DelHomestayActivityReq, opts ...grpc.CallOption) (*DelHomestayActivityResp, error) {
-	out := new(DelHomestayActivityResp)
-	err := c.cc.Invoke(ctx, Travel_DelHomestayActivity_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) GetHomestayActivityById(ctx context.Context, in *GetHomestayActivityByIdReq, opts ...grpc.CallOption) (*GetHomestayActivityByIdResp, error) {
-	out := new(GetHomestayActivityByIdResp)
-	err := c.cc.Invoke(ctx, Travel_GetHomestayActivityById_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) SearchHomestayActivity(ctx context.Context, in *SearchHomestayActivityReq, opts ...grpc.CallOption) (*SearchHomestayActivityResp, error) {
-	out := new(SearchHomestayActivityResp)
-	err := c.cc.Invoke(ctx, Travel_SearchHomestayActivity_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) AddHomestayBusiness(ctx context.Context, in *AddHomestayBusinessReq, opts ...grpc.CallOption) (*AddHomestayBusinessResp, error) {
-	out := new(AddHomestayBusinessResp)
-	err := c.cc.Invoke(ctx, Travel_AddHomestayBusiness_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) UpdateHomestayBusiness(ctx context.Context, in *UpdateHomestayBusinessReq, opts ...grpc.CallOption) (*UpdateHomestayBusinessResp, error) {
-	out := new(UpdateHomestayBusinessResp)
-	err := c.cc.Invoke(ctx, Travel_UpdateHomestayBusiness_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) DelHomestayBusiness(ctx context.Context, in *DelHomestayBusinessReq, opts ...grpc.CallOption) (*DelHomestayBusinessResp, error) {
-	out := new(DelHomestayBusinessResp)
-	err := c.cc.Invoke(ctx, Travel_DelHomestayBusiness_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) GetHomestayBusinessById(ctx context.Context, in *GetHomestayBusinessByIdReq, opts ...grpc.CallOption) (*GetHomestayBusinessByIdResp, error) {
-	out := new(GetHomestayBusinessByIdResp)
-	err := c.cc.Invoke(ctx, Travel_GetHomestayBusinessById_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) SearchHomestayBusiness(ctx context.Context, in *SearchHomestayBusinessReq, opts ...grpc.CallOption) (*SearchHomestayBusinessResp, error) {
-	out := new(SearchHomestayBusinessResp)
-	err := c.cc.Invoke(ctx, Travel_SearchHomestayBusiness_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) AddHomestayComment(ctx context.Context, in *AddHomestayCommentReq, opts ...grpc.CallOption) (*AddHomestayCommentResp, error) {
-	out := new(AddHomestayCommentResp)
-	err := c.cc.Invoke(ctx, Travel_AddHomestayComment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) UpdateHomestayComment(ctx context.Context, in *UpdateHomestayCommentReq, opts ...grpc.CallOption) (*UpdateHomestayCommentResp, error) {
-	out := new(UpdateHomestayCommentResp)
-	err := c.cc.Invoke(ctx, Travel_UpdateHomestayComment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) DelHomestayComment(ctx context.Context, in *DelHomestayCommentReq, opts ...grpc.CallOption) (*DelHomestayCommentResp, error) {
-	out := new(DelHomestayCommentResp)
-	err := c.cc.Invoke(ctx, Travel_DelHomestayComment_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) GetHomestayCommentById(ctx context.Context, in *GetHomestayCommentByIdReq, opts ...grpc.CallOption) (*GetHomestayCommentByIdResp, error) {
-	out := new(GetHomestayCommentByIdResp)
-	err := c.cc.Invoke(ctx, Travel_GetHomestayCommentById_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) SearchHomestayComment(ctx context.Context, in *SearchHomestayCommentReq, opts ...grpc.CallOption) (*SearchHomestayCommentResp, error) {
-	out := new(SearchHomestayCommentResp)
-	err := c.cc.Invoke(ctx, Travel_SearchHomestayComment_FullMethodName, in, out, opts...)
+func (c *travelClient) CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error) {
+	out := new(CommentListResp)
+	err := c.cc.Invoke(ctx, Travel_CommentList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -263,30 +127,14 @@ func (c *travelClient) SearchHomestayComment(ctx context.Context, in *SearchHome
 // All implementations must embed UnimplementedTravelServer
 // for forward compatibility
 type TravelServer interface {
-	// -----------------------每一间民宿-----------------------
-	AddHomestay(context.Context, *AddHomestayReq) (*AddHomestayResp, error)
-	UpdateHomestay(context.Context, *UpdateHomestayReq) (*UpdateHomestayResp, error)
-	DelHomestay(context.Context, *DelHomestayReq) (*DelHomestayResp, error)
-	GetHomestayById(context.Context, *GetHomestayByIdReq) (*GetHomestayByIdResp, error)
-	SearchHomestay(context.Context, *SearchHomestayReq) (*SearchHomestayResp, error)
-	// -----------------------每一间民宿-----------------------
-	AddHomestayActivity(context.Context, *AddHomestayActivityReq) (*AddHomestayActivityResp, error)
-	UpdateHomestayActivity(context.Context, *UpdateHomestayActivityReq) (*UpdateHomestayActivityResp, error)
-	DelHomestayActivity(context.Context, *DelHomestayActivityReq) (*DelHomestayActivityResp, error)
-	GetHomestayActivityById(context.Context, *GetHomestayActivityByIdReq) (*GetHomestayActivityByIdResp, error)
-	SearchHomestayActivity(context.Context, *SearchHomestayActivityReq) (*SearchHomestayActivityResp, error)
-	// -----------------------民宿店铺-----------------------
-	AddHomestayBusiness(context.Context, *AddHomestayBusinessReq) (*AddHomestayBusinessResp, error)
-	UpdateHomestayBusiness(context.Context, *UpdateHomestayBusinessReq) (*UpdateHomestayBusinessResp, error)
-	DelHomestayBusiness(context.Context, *DelHomestayBusinessReq) (*DelHomestayBusinessResp, error)
-	GetHomestayBusinessById(context.Context, *GetHomestayBusinessByIdReq) (*GetHomestayBusinessByIdResp, error)
-	SearchHomestayBusiness(context.Context, *SearchHomestayBusinessReq) (*SearchHomestayBusinessResp, error)
-	// -----------------------民宿评价-----------------------
-	AddHomestayComment(context.Context, *AddHomestayCommentReq) (*AddHomestayCommentResp, error)
-	UpdateHomestayComment(context.Context, *UpdateHomestayCommentReq) (*UpdateHomestayCommentResp, error)
-	DelHomestayComment(context.Context, *DelHomestayCommentReq) (*DelHomestayCommentResp, error)
-	GetHomestayCommentById(context.Context, *GetHomestayCommentByIdReq) (*GetHomestayCommentByIdResp, error)
-	SearchHomestayComment(context.Context, *SearchHomestayCommentReq) (*SearchHomestayCommentResp, error)
+	HomestayList(context.Context, *HomestayListReq) (*HomestayListResp, error)
+	BusinessList(context.Context, *BusinessListReq) (*BusinessListResp, error)
+	GuessList(context.Context, *GuessListReq) (*GoodBossResp, error)
+	HomestayDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error)
+	GoodBoss(context.Context, *GoodBossReq) (*GoodBossResp, error)
+	HomestayBussinessList(context.Context, *HomestayBussinessListReq) (*HomestayBussinessListResp, error)
+	HomestayBussinessDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error)
+	CommentList(context.Context, *CommentListReq) (*CommentListResp, error)
 	mustEmbedUnimplementedTravelServer()
 }
 
@@ -294,65 +142,29 @@ type TravelServer interface {
 type UnimplementedTravelServer struct {
 }
 
-func (UnimplementedTravelServer) AddHomestay(context.Context, *AddHomestayReq) (*AddHomestayResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddHomestay not implemented")
+func (UnimplementedTravelServer) HomestayList(context.Context, *HomestayListReq) (*HomestayListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HomestayList not implemented")
 }
-func (UnimplementedTravelServer) UpdateHomestay(context.Context, *UpdateHomestayReq) (*UpdateHomestayResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHomestay not implemented")
+func (UnimplementedTravelServer) BusinessList(context.Context, *BusinessListReq) (*BusinessListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BusinessList not implemented")
 }
-func (UnimplementedTravelServer) DelHomestay(context.Context, *DelHomestayReq) (*DelHomestayResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DelHomestay not implemented")
+func (UnimplementedTravelServer) GuessList(context.Context, *GuessListReq) (*GoodBossResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GuessList not implemented")
 }
-func (UnimplementedTravelServer) GetHomestayById(context.Context, *GetHomestayByIdReq) (*GetHomestayByIdResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHomestayById not implemented")
+func (UnimplementedTravelServer) HomestayDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HomestayDetail not implemented")
 }
-func (UnimplementedTravelServer) SearchHomestay(context.Context, *SearchHomestayReq) (*SearchHomestayResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchHomestay not implemented")
+func (UnimplementedTravelServer) GoodBoss(context.Context, *GoodBossReq) (*GoodBossResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GoodBoss not implemented")
 }
-func (UnimplementedTravelServer) AddHomestayActivity(context.Context, *AddHomestayActivityReq) (*AddHomestayActivityResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddHomestayActivity not implemented")
+func (UnimplementedTravelServer) HomestayBussinessList(context.Context, *HomestayBussinessListReq) (*HomestayBussinessListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HomestayBussinessList not implemented")
 }
-func (UnimplementedTravelServer) UpdateHomestayActivity(context.Context, *UpdateHomestayActivityReq) (*UpdateHomestayActivityResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHomestayActivity not implemented")
+func (UnimplementedTravelServer) HomestayBussinessDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HomestayBussinessDetail not implemented")
 }
-func (UnimplementedTravelServer) DelHomestayActivity(context.Context, *DelHomestayActivityReq) (*DelHomestayActivityResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DelHomestayActivity not implemented")
-}
-func (UnimplementedTravelServer) GetHomestayActivityById(context.Context, *GetHomestayActivityByIdReq) (*GetHomestayActivityByIdResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHomestayActivityById not implemented")
-}
-func (UnimplementedTravelServer) SearchHomestayActivity(context.Context, *SearchHomestayActivityReq) (*SearchHomestayActivityResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchHomestayActivity not implemented")
-}
-func (UnimplementedTravelServer) AddHomestayBusiness(context.Context, *AddHomestayBusinessReq) (*AddHomestayBusinessResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddHomestayBusiness not implemented")
-}
-func (UnimplementedTravelServer) UpdateHomestayBusiness(context.Context, *UpdateHomestayBusinessReq) (*UpdateHomestayBusinessResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHomestayBusiness not implemented")
-}
-func (UnimplementedTravelServer) DelHomestayBusiness(context.Context, *DelHomestayBusinessReq) (*DelHomestayBusinessResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DelHomestayBusiness not implemented")
-}
-func (UnimplementedTravelServer) GetHomestayBusinessById(context.Context, *GetHomestayBusinessByIdReq) (*GetHomestayBusinessByIdResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHomestayBusinessById not implemented")
-}
-func (UnimplementedTravelServer) SearchHomestayBusiness(context.Context, *SearchHomestayBusinessReq) (*SearchHomestayBusinessResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchHomestayBusiness not implemented")
-}
-func (UnimplementedTravelServer) AddHomestayComment(context.Context, *AddHomestayCommentReq) (*AddHomestayCommentResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddHomestayComment not implemented")
-}
-func (UnimplementedTravelServer) UpdateHomestayComment(context.Context, *UpdateHomestayCommentReq) (*UpdateHomestayCommentResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateHomestayComment not implemented")
-}
-func (UnimplementedTravelServer) DelHomestayComment(context.Context, *DelHomestayCommentReq) (*DelHomestayCommentResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DelHomestayComment not implemented")
-}
-func (UnimplementedTravelServer) GetHomestayCommentById(context.Context, *GetHomestayCommentByIdReq) (*GetHomestayCommentByIdResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHomestayCommentById not implemented")
-}
-func (UnimplementedTravelServer) SearchHomestayComment(context.Context, *SearchHomestayCommentReq) (*SearchHomestayCommentResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchHomestayComment not implemented")
+func (UnimplementedTravelServer) CommentList(context.Context, *CommentListReq) (*CommentListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CommentList not implemented")
 }
 func (UnimplementedTravelServer) mustEmbedUnimplementedTravelServer() {}
 
@@ -367,362 +179,146 @@ func RegisterTravelServer(s grpc.ServiceRegistrar, srv TravelServer) {
 	s.RegisterService(&Travel_ServiceDesc, srv)
 }
 
-func _Travel_AddHomestay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddHomestayReq)
+func _Travel_HomestayList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HomestayListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).AddHomestay(ctx, in)
+		return srv.(TravelServer).HomestayList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_AddHomestay_FullMethodName,
+		FullMethod: Travel_HomestayList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).AddHomestay(ctx, req.(*AddHomestayReq))
+		return srv.(TravelServer).HomestayList(ctx, req.(*HomestayListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_UpdateHomestay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHomestayReq)
+func _Travel_BusinessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BusinessListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).UpdateHomestay(ctx, in)
+		return srv.(TravelServer).BusinessList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_UpdateHomestay_FullMethodName,
+		FullMethod: Travel_BusinessList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).UpdateHomestay(ctx, req.(*UpdateHomestayReq))
+		return srv.(TravelServer).BusinessList(ctx, req.(*BusinessListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_DelHomestay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DelHomestayReq)
+func _Travel_GuessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GuessListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).DelHomestay(ctx, in)
+		return srv.(TravelServer).GuessList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_DelHomestay_FullMethodName,
+		FullMethod: Travel_GuessList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).DelHomestay(ctx, req.(*DelHomestayReq))
+		return srv.(TravelServer).GuessList(ctx, req.(*GuessListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_GetHomestayById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetHomestayByIdReq)
+func _Travel_HomestayDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HomestayDetailReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).GetHomestayById(ctx, in)
+		return srv.(TravelServer).HomestayDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_GetHomestayById_FullMethodName,
+		FullMethod: Travel_HomestayDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GetHomestayById(ctx, req.(*GetHomestayByIdReq))
+		return srv.(TravelServer).HomestayDetail(ctx, req.(*HomestayDetailReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_SearchHomestay_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchHomestayReq)
+func _Travel_GoodBoss_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GoodBossReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).SearchHomestay(ctx, in)
+		return srv.(TravelServer).GoodBoss(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_SearchHomestay_FullMethodName,
+		FullMethod: Travel_GoodBoss_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).SearchHomestay(ctx, req.(*SearchHomestayReq))
+		return srv.(TravelServer).GoodBoss(ctx, req.(*GoodBossReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_AddHomestayActivity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddHomestayActivityReq)
+func _Travel_HomestayBussinessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HomestayBussinessListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).AddHomestayActivity(ctx, in)
+		return srv.(TravelServer).HomestayBussinessList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_AddHomestayActivity_FullMethodName,
+		FullMethod: Travel_HomestayBussinessList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).AddHomestayActivity(ctx, req.(*AddHomestayActivityReq))
+		return srv.(TravelServer).HomestayBussinessList(ctx, req.(*HomestayBussinessListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_UpdateHomestayActivity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHomestayActivityReq)
+func _Travel_HomestayBussinessDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HomestayDetailReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).UpdateHomestayActivity(ctx, in)
+		return srv.(TravelServer).HomestayBussinessDetail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_UpdateHomestayActivity_FullMethodName,
+		FullMethod: Travel_HomestayBussinessDetail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).UpdateHomestayActivity(ctx, req.(*UpdateHomestayActivityReq))
+		return srv.(TravelServer).HomestayBussinessDetail(ctx, req.(*HomestayDetailReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_DelHomestayActivity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DelHomestayActivityReq)
+func _Travel_CommentList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CommentListReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TravelServer).DelHomestayActivity(ctx, in)
+		return srv.(TravelServer).CommentList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Travel_DelHomestayActivity_FullMethodName,
+		FullMethod: Travel_CommentList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).DelHomestayActivity(ctx, req.(*DelHomestayActivityReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_GetHomestayActivityById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetHomestayActivityByIdReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).GetHomestayActivityById(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_GetHomestayActivityById_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GetHomestayActivityById(ctx, req.(*GetHomestayActivityByIdReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_SearchHomestayActivity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchHomestayActivityReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).SearchHomestayActivity(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_SearchHomestayActivity_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).SearchHomestayActivity(ctx, req.(*SearchHomestayActivityReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_AddHomestayBusiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddHomestayBusinessReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).AddHomestayBusiness(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_AddHomestayBusiness_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).AddHomestayBusiness(ctx, req.(*AddHomestayBusinessReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_UpdateHomestayBusiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHomestayBusinessReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).UpdateHomestayBusiness(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_UpdateHomestayBusiness_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).UpdateHomestayBusiness(ctx, req.(*UpdateHomestayBusinessReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_DelHomestayBusiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DelHomestayBusinessReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).DelHomestayBusiness(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_DelHomestayBusiness_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).DelHomestayBusiness(ctx, req.(*DelHomestayBusinessReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_GetHomestayBusinessById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetHomestayBusinessByIdReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).GetHomestayBusinessById(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_GetHomestayBusinessById_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GetHomestayBusinessById(ctx, req.(*GetHomestayBusinessByIdReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_SearchHomestayBusiness_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchHomestayBusinessReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).SearchHomestayBusiness(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_SearchHomestayBusiness_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).SearchHomestayBusiness(ctx, req.(*SearchHomestayBusinessReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_AddHomestayComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddHomestayCommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).AddHomestayComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_AddHomestayComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).AddHomestayComment(ctx, req.(*AddHomestayCommentReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_UpdateHomestayComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateHomestayCommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).UpdateHomestayComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_UpdateHomestayComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).UpdateHomestayComment(ctx, req.(*UpdateHomestayCommentReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_DelHomestayComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DelHomestayCommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).DelHomestayComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_DelHomestayComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).DelHomestayComment(ctx, req.(*DelHomestayCommentReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_GetHomestayCommentById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetHomestayCommentByIdReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).GetHomestayCommentById(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_GetHomestayCommentById_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GetHomestayCommentById(ctx, req.(*GetHomestayCommentByIdReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_SearchHomestayComment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchHomestayCommentReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).SearchHomestayComment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_SearchHomestayComment_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).SearchHomestayComment(ctx, req.(*SearchHomestayCommentReq))
+		return srv.(TravelServer).CommentList(ctx, req.(*CommentListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -735,84 +331,36 @@ var Travel_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TravelServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AddHomestay",
-			Handler:    _Travel_AddHomestay_Handler,
+			MethodName: "homestayList",
+			Handler:    _Travel_HomestayList_Handler,
 		},
 		{
-			MethodName: "UpdateHomestay",
-			Handler:    _Travel_UpdateHomestay_Handler,
+			MethodName: "businessList",
+			Handler:    _Travel_BusinessList_Handler,
 		},
 		{
-			MethodName: "DelHomestay",
-			Handler:    _Travel_DelHomestay_Handler,
+			MethodName: "guessList",
+			Handler:    _Travel_GuessList_Handler,
 		},
 		{
-			MethodName: "GetHomestayById",
-			Handler:    _Travel_GetHomestayById_Handler,
+			MethodName: "homestayDetail",
+			Handler:    _Travel_HomestayDetail_Handler,
 		},
 		{
-			MethodName: "SearchHomestay",
-			Handler:    _Travel_SearchHomestay_Handler,
+			MethodName: "goodBoss",
+			Handler:    _Travel_GoodBoss_Handler,
 		},
 		{
-			MethodName: "AddHomestayActivity",
-			Handler:    _Travel_AddHomestayActivity_Handler,
+			MethodName: "homestayBussinessList",
+			Handler:    _Travel_HomestayBussinessList_Handler,
 		},
 		{
-			MethodName: "UpdateHomestayActivity",
-			Handler:    _Travel_UpdateHomestayActivity_Handler,
+			MethodName: "homestayBussinessDetail",
+			Handler:    _Travel_HomestayBussinessDetail_Handler,
 		},
 		{
-			MethodName: "DelHomestayActivity",
-			Handler:    _Travel_DelHomestayActivity_Handler,
-		},
-		{
-			MethodName: "GetHomestayActivityById",
-			Handler:    _Travel_GetHomestayActivityById_Handler,
-		},
-		{
-			MethodName: "SearchHomestayActivity",
-			Handler:    _Travel_SearchHomestayActivity_Handler,
-		},
-		{
-			MethodName: "AddHomestayBusiness",
-			Handler:    _Travel_AddHomestayBusiness_Handler,
-		},
-		{
-			MethodName: "UpdateHomestayBusiness",
-			Handler:    _Travel_UpdateHomestayBusiness_Handler,
-		},
-		{
-			MethodName: "DelHomestayBusiness",
-			Handler:    _Travel_DelHomestayBusiness_Handler,
-		},
-		{
-			MethodName: "GetHomestayBusinessById",
-			Handler:    _Travel_GetHomestayBusinessById_Handler,
-		},
-		{
-			MethodName: "SearchHomestayBusiness",
-			Handler:    _Travel_SearchHomestayBusiness_Handler,
-		},
-		{
-			MethodName: "AddHomestayComment",
-			Handler:    _Travel_AddHomestayComment_Handler,
-		},
-		{
-			MethodName: "UpdateHomestayComment",
-			Handler:    _Travel_UpdateHomestayComment_Handler,
-		},
-		{
-			MethodName: "DelHomestayComment",
-			Handler:    _Travel_DelHomestayComment_Handler,
-		},
-		{
-			MethodName: "GetHomestayCommentById",
-			Handler:    _Travel_GetHomestayCommentById_Handler,
-		},
-		{
-			MethodName: "SearchHomestayComment",
-			Handler:    _Travel_SearchHomestayComment_Handler,
+			MethodName: "commentList",
+			Handler:    _Travel_CommentList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

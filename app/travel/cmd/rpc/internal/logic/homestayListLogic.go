@@ -9,22 +9,22 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type SearchHomestayLogic struct {
+type HomestayListLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 	logx.Logger
 }
 
-func NewSearchHomestayLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SearchHomestayLogic {
-	return &SearchHomestayLogic{
+func NewHomestayListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *HomestayListLogic {
+	return &HomestayListLogic{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *SearchHomestayLogic) SearchHomestay(in *pb.SearchHomestayReq) (*pb.SearchHomestayResp, error) {
+func (l *HomestayListLogic) HomestayList(in *pb.HomestayListReq) (*pb.HomestayListResp, error) {
 	// todo: add your logic here and delete this line
 
-	return &pb.SearchHomestayResp{}, nil
+	return &pb.HomestayListResp{}, nil
 }

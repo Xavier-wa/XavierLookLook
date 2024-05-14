@@ -27,12 +27,12 @@ func main() {
 {{range .serviceNames}}       {{.Pkg}}.Register{{.Service}}Server(grpcServer, {{.ServerPkg}}.New{{.Service}}Server(ctx))
 {{end}}
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {
-			reflection.Register(rpcServer)
+			reflection.Register(grpcServer)
 		}
 	})
 
 	//rpc log
-	s.AddUnaryInterceptors(grpcserver.LoggerInterceptor)
+	s.AddUnaryInterceptors(rpcserver.LoggerInterceptor)
 
 	defer s.Stop()
 
