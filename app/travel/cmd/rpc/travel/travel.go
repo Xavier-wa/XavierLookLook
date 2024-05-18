@@ -13,37 +13,13 @@ import (
 )
 
 type (
-	BusinessListReq             = pb.BusinessListReq
-	BusinessListResp            = pb.BusinessListResp
-	CommentListReq              = pb.CommentListReq
-	CommentListResp             = pb.CommentListResp
-	GoodBossReq                 = pb.GoodBossReq
-	GoodBossResp                = pb.GoodBossResp
-	GuessListReq                = pb.GuessListReq
-	GuessListResp               = pb.GuessListResp
-	Homestay                    = pb.Homestay
-	HomestayBusiness            = pb.HomestayBusiness
-	HomestayBusinessBoss        = pb.HomestayBusinessBoss
-	HomestayBusinessListInfo    = pb.HomestayBusinessListInfo
-	HomestayBussinessDetailReq  = pb.HomestayBussinessDetailReq
-	HomestayBussinessDetailResp = pb.HomestayBussinessDetailResp
-	HomestayBussinessListReq    = pb.HomestayBussinessListReq
-	HomestayBussinessListResp   = pb.HomestayBussinessListResp
-	HomestayComment             = pb.HomestayComment
-	HomestayDetailReq           = pb.HomestayDetailReq
-	HomestayDetailResp          = pb.HomestayDetailResp
-	HomestayListReq             = pb.HomestayListReq
-	HomestayListResp            = pb.HomestayListResp
+	Homestay           = pb.Homestay
+	HomestayDetailReq  = pb.HomestayDetailReq
+	HomestayDetailResp = pb.HomestayDetailResp
 
 	Travel interface {
-		HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error)
-		BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error)
-		GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+		// homestayDetail
 		HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
-		GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error)
-		HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error)
-		HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
-		CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error)
 	}
 
 	defaultTravel struct {
@@ -57,42 +33,8 @@ func NewTravel(cli zrpc.Client) Travel {
 	}
 }
 
-func (m *defaultTravel) HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.HomestayList(ctx, in, opts...)
-}
-
-func (m *defaultTravel) BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.BusinessList(ctx, in, opts...)
-}
-
-func (m *defaultTravel) GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GuessList(ctx, in, opts...)
-}
-
+// homestayDetail
 func (m *defaultTravel) HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
 	client := pb.NewTravelClient(m.cli.Conn())
 	return client.HomestayDetail(ctx, in, opts...)
-}
-
-func (m *defaultTravel) GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.GoodBoss(ctx, in, opts...)
-}
-
-func (m *defaultTravel) HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.HomestayBussinessList(ctx, in, opts...)
-}
-
-func (m *defaultTravel) HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.HomestayBussinessDetail(ctx, in, opts...)
-}
-
-func (m *defaultTravel) CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error) {
-	client := pb.NewTravelClient(m.cli.Conn())
-	return client.CommentList(ctx, in, opts...)
 }

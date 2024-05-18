@@ -19,28 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Travel_HomestayList_FullMethodName            = "/pb.travel/homestayList"
-	Travel_BusinessList_FullMethodName            = "/pb.travel/businessList"
-	Travel_GuessList_FullMethodName               = "/pb.travel/guessList"
-	Travel_HomestayDetail_FullMethodName          = "/pb.travel/homestayDetail"
-	Travel_GoodBoss_FullMethodName                = "/pb.travel/goodBoss"
-	Travel_HomestayBussinessList_FullMethodName   = "/pb.travel/homestayBussinessList"
-	Travel_HomestayBussinessDetail_FullMethodName = "/pb.travel/homestayBussinessDetail"
-	Travel_CommentList_FullMethodName             = "/pb.travel/commentList"
+	Travel_HomestayDetail_FullMethodName = "/pb.travel/homestayDetail"
 )
 
 // TravelClient is the client API for Travel service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TravelClient interface {
-	HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error)
-	BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error)
-	GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error)
+	// homestayDetail
 	HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
-	GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error)
-	HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error)
-	HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error)
-	CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error)
 }
 
 type travelClient struct {
@@ -49,33 +36,6 @@ type travelClient struct {
 
 func NewTravelClient(cc grpc.ClientConnInterface) TravelClient {
 	return &travelClient{cc}
-}
-
-func (c *travelClient) HomestayList(ctx context.Context, in *HomestayListReq, opts ...grpc.CallOption) (*HomestayListResp, error) {
-	out := new(HomestayListResp)
-	err := c.cc.Invoke(ctx, Travel_HomestayList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) BusinessList(ctx context.Context, in *BusinessListReq, opts ...grpc.CallOption) (*BusinessListResp, error) {
-	out := new(BusinessListResp)
-	err := c.cc.Invoke(ctx, Travel_BusinessList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) GuessList(ctx context.Context, in *GuessListReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
-	out := new(GoodBossResp)
-	err := c.cc.Invoke(ctx, Travel_GuessList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *travelClient) HomestayDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
@@ -87,54 +47,12 @@ func (c *travelClient) HomestayDetail(ctx context.Context, in *HomestayDetailReq
 	return out, nil
 }
 
-func (c *travelClient) GoodBoss(ctx context.Context, in *GoodBossReq, opts ...grpc.CallOption) (*GoodBossResp, error) {
-	out := new(GoodBossResp)
-	err := c.cc.Invoke(ctx, Travel_GoodBoss_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) HomestayBussinessList(ctx context.Context, in *HomestayBussinessListReq, opts ...grpc.CallOption) (*HomestayBussinessListResp, error) {
-	out := new(HomestayBussinessListResp)
-	err := c.cc.Invoke(ctx, Travel_HomestayBussinessList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) HomestayBussinessDetail(ctx context.Context, in *HomestayDetailReq, opts ...grpc.CallOption) (*HomestayDetailResp, error) {
-	out := new(HomestayDetailResp)
-	err := c.cc.Invoke(ctx, Travel_HomestayBussinessDetail_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *travelClient) CommentList(ctx context.Context, in *CommentListReq, opts ...grpc.CallOption) (*CommentListResp, error) {
-	out := new(CommentListResp)
-	err := c.cc.Invoke(ctx, Travel_CommentList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // TravelServer is the server API for Travel service.
 // All implementations must embed UnimplementedTravelServer
 // for forward compatibility
 type TravelServer interface {
-	HomestayList(context.Context, *HomestayListReq) (*HomestayListResp, error)
-	BusinessList(context.Context, *BusinessListReq) (*BusinessListResp, error)
-	GuessList(context.Context, *GuessListReq) (*GoodBossResp, error)
+	// homestayDetail
 	HomestayDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error)
-	GoodBoss(context.Context, *GoodBossReq) (*GoodBossResp, error)
-	HomestayBussinessList(context.Context, *HomestayBussinessListReq) (*HomestayBussinessListResp, error)
-	HomestayBussinessDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error)
-	CommentList(context.Context, *CommentListReq) (*CommentListResp, error)
 	mustEmbedUnimplementedTravelServer()
 }
 
@@ -142,29 +60,8 @@ type TravelServer interface {
 type UnimplementedTravelServer struct {
 }
 
-func (UnimplementedTravelServer) HomestayList(context.Context, *HomestayListReq) (*HomestayListResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method HomestayList not implemented")
-}
-func (UnimplementedTravelServer) BusinessList(context.Context, *BusinessListReq) (*BusinessListResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BusinessList not implemented")
-}
-func (UnimplementedTravelServer) GuessList(context.Context, *GuessListReq) (*GoodBossResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GuessList not implemented")
-}
 func (UnimplementedTravelServer) HomestayDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HomestayDetail not implemented")
-}
-func (UnimplementedTravelServer) GoodBoss(context.Context, *GoodBossReq) (*GoodBossResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GoodBoss not implemented")
-}
-func (UnimplementedTravelServer) HomestayBussinessList(context.Context, *HomestayBussinessListReq) (*HomestayBussinessListResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method HomestayBussinessList not implemented")
-}
-func (UnimplementedTravelServer) HomestayBussinessDetail(context.Context, *HomestayDetailReq) (*HomestayDetailResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method HomestayBussinessDetail not implemented")
-}
-func (UnimplementedTravelServer) CommentList(context.Context, *CommentListReq) (*CommentListResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CommentList not implemented")
 }
 func (UnimplementedTravelServer) mustEmbedUnimplementedTravelServer() {}
 
@@ -177,60 +74,6 @@ type UnsafeTravelServer interface {
 
 func RegisterTravelServer(s grpc.ServiceRegistrar, srv TravelServer) {
 	s.RegisterService(&Travel_ServiceDesc, srv)
-}
-
-func _Travel_HomestayList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HomestayListReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).HomestayList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_HomestayList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).HomestayList(ctx, req.(*HomestayListReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_BusinessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BusinessListReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).BusinessList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_BusinessList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).BusinessList(ctx, req.(*BusinessListReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_GuessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GuessListReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).GuessList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_GuessList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GuessList(ctx, req.(*GuessListReq))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _Travel_HomestayDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -251,78 +94,6 @@ func _Travel_HomestayDetail_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Travel_GoodBoss_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GoodBossReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).GoodBoss(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_GoodBoss_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).GoodBoss(ctx, req.(*GoodBossReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_HomestayBussinessList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HomestayBussinessListReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).HomestayBussinessList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_HomestayBussinessList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).HomestayBussinessList(ctx, req.(*HomestayBussinessListReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_HomestayBussinessDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HomestayDetailReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).HomestayBussinessDetail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_HomestayBussinessDetail_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).HomestayBussinessDetail(ctx, req.(*HomestayDetailReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Travel_CommentList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CommentListReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TravelServer).CommentList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Travel_CommentList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TravelServer).CommentList(ctx, req.(*CommentListReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Travel_ServiceDesc is the grpc.ServiceDesc for Travel service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -331,36 +102,8 @@ var Travel_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TravelServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "homestayList",
-			Handler:    _Travel_HomestayList_Handler,
-		},
-		{
-			MethodName: "businessList",
-			Handler:    _Travel_BusinessList_Handler,
-		},
-		{
-			MethodName: "guessList",
-			Handler:    _Travel_GuessList_Handler,
-		},
-		{
 			MethodName: "homestayDetail",
 			Handler:    _Travel_HomestayDetail_Handler,
-		},
-		{
-			MethodName: "goodBoss",
-			Handler:    _Travel_GoodBoss_Handler,
-		},
-		{
-			MethodName: "homestayBussinessList",
-			Handler:    _Travel_HomestayBussinessList_Handler,
-		},
-		{
-			MethodName: "homestayBussinessDetail",
-			Handler:    _Travel_HomestayBussinessDetail_Handler,
-		},
-		{
-			MethodName: "commentList",
-			Handler:    _Travel_CommentList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

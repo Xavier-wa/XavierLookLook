@@ -1,145 +1,42 @@
 syntax = "proto3";
 
-option go_package ="./pb";
+option go_package = "./pb";
 
 package pb;
 
+
+//model
 message Homestay {
-  int64   Id                    = 1;
-  string  Title                 = 2;
-  string  SubTitle              = 3;
-  string  Banner                = 4;
-  string  Info                  = 5;
-  int64   PeopleNum             = 6;
-  int64   HomestayBusinessId    = 7;
-  int64   UserId                = 8;
-  int64   RowState              = 9;
-  int64   RowType               = 10;
-  string  FoodInfo              = 11;
-  float   FoodPrice             = 12;
-  float   HomestayPrice         = 13;
-  float   MarketHomestayPrice   = 14;
+    int64   id = 1;
+    string  title = 2;
+    string  subTitle = 3;
+    string  banner = 4;
+    string  info = 5;
+    int64   peopleNum = 6;            //容纳人的数量
+    int64   homestayBusinessId = 7;   //店铺id
+    int64   userId = 8;               //房东id
+    int64   rowState = 9;             //0:下架 1:上架
+    int64   rowType = 10;             //售卖类型0：按房间出售 1:按人次出售
+    string  foodInfo = 11;            //餐食标准
+    int64   foodPrice = 12;           //餐食价格(分)
+    int64   homestayPrice = 13;       //民宿价格(分)
+    int64   marketHomestayPrice = 14; //民宿市场价格(分)
+
 }
 
 
-
-message BusinessListReq {
-  int64 LastId              = 1 ; 
-  int64 PageSize            = 2 ; 
-  int64 HomestayBusinessId  = 3 ; 
-}
-
-message BusinessListResp {
-  repeated Homestay Homestay = 1;
-}
-
-
-message HomestayListReq {
- int64 Page     = 1;  
- int64 PageSize = 2;  
-}
-
-
-message HomestayListResp {
-  repeated Homestay Homestay = 1;
-}
-message GuessListReq {
-}
-
-message GuessListResp {
-  repeated Homestay Homestay = 1;
-}
-
-
+//req 、resp
 message HomestayDetailReq {
-  int64  Id = 1;
+  int64   id = 1;
 }
-
 message HomestayDetailResp {
-  Homestay Homestay = 1;
+  Homestay homestay = 1;
 }
 
 
 
-message HomestayBusinessBoss {
-	int64   Id       = 1;
-	int64   UserId   = 2;
-	string  Nickname = 3;
-	string  Avatar   = 4;
-	string  Info     = 5;
-	int64   Rank     = 6;
-}
-
-message HomestayBusiness {
-	int64  Id         = 1;
-	string Title      = 2;
-	string Info       = 3;
-	string Tags       = 4;
-	string Cover      = 5;
-	float Star       = 6;
-	int64  IsFav      = 7;
-	string HeaderImg  = 8;
-}
-
-
-message GoodBossReq {
-}
-
-message GoodBossResp {
-  repeated HomestayBusinessBoss HomestayBusinessBoss = 1;
-}
-
-message HomestayBusinessListInfo {
-  HomestayBusiness HomestayBusiness = 1;
-  int64 SellMonth = 2;
-  int64 PersonConsume = 3;
-}
-
-message  HomestayBussinessListReq {
-  int64 LastId   = 1;
-  int64 PageSize = 2;
-}
-
-message HomestayBussinessListResp {
-  repeated HomestayBusinessListInfo Info = 1;
-}
-
-message  HomestayBussinessDetailReq {
-  int64 Id   = 1;
-}
-
-message HomestayBussinessDetailResp {
-  repeated HomestayBusinessBoss Boss = 1;
-}
-
-message  HomestayComment {
- int64     Id         = 1;
- int64     HomestayId = 2;
- string    Content    = 3;
- float   Star       = 4;
- int64     UserId     = 5;
- string    Nickname   = 6;
- string    Avatar     = 7;
-}
-
-message CommentListReq {
-  int64 LastId = 1;
-  int64 PageSize = 2;
-}
-
-message CommentListResp {
-  repeated HomestayComment HomestayComment = 1;
-}
-
-service  travel {
- rpc  homestayList            (HomestayListReq) returns (HomestayListResp);
- rpc  businessList            (BusinessListReq) returns (BusinessListResp);
- rpc  guessList               (GuessListReq) returns (GoodBossResp);
- rpc  homestayDetail          (HomestayDetailReq) returns (HomestayDetailResp);
- 
- rpc  goodBoss                (GoodBossReq) returns (GoodBossResp);
- rpc  homestayBussinessList   (HomestayBussinessListReq) returns (HomestayBussinessListResp);
- rpc  homestayBussinessDetail (HomestayDetailReq) returns (HomestayDetailResp);
-
- rpc  commentList             (CommentListReq) returns (CommentListResp);
+//service
+service travel {
+    //homestayDetail
+    rpc homestayDetail(HomestayDetailReq) returns(HomestayDetailResp);
 }

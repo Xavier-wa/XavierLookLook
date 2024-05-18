@@ -23,6 +23,7 @@ func NewHomestayDetailLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Ho
 	}
 }
 
+// homestayDetail
 func (l *HomestayDetailLogic) HomestayDetail(in *pb.HomestayDetailReq) (*pb.HomestayDetailResp, error) {
 	// todo: add your logic here and delete this line
 
