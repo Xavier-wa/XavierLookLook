@@ -35,7 +35,7 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 }
 
 func (l *RegisterLogic) Register(in *usercenter.RegisterReq) (*usercenter.RegisterResp, error) {
-	//布隆过滤器
+	//布隆过滤
 	isExist, err := l.svcCtx.Filter.Exists([]byte(fmt.Sprintf("%s%v", cacheLooklookUsercenterUserMobilePrefix, in.Mobile)))
 	if isExist || err != nil {
 		return nil, errors.Wrapf(xerr.NewErrCode(xerr.DB_ERROR), "mobile:%s,err:%v", in.Mobile, err)
