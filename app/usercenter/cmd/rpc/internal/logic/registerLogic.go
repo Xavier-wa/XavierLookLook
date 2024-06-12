@@ -2,17 +2,23 @@ package logic
 
 import (
 	"context"
-	"github.com/pkg/errors"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"fmt"
 	"looklook/app/usercenter/cmd/rpc/internal/svc"
 	"looklook/app/usercenter/cmd/rpc/usercenter"
 	"looklook/app/usercenter/model"
 	"looklook/common/tool"
 	"looklook/common/xerr"
+
+	"github.com/pkg/errors"
+	"github.com/zeromicro/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
 
-var ErrUserAlreadyRegisterError = xerr.NewErrMsg("user has been registered")
+var (
+	ErrUserAlreadyRegisterError = xerr.NewErrMsg("user has been registered")
+	// cacheLooklookUsercenterUserIdPrefix     = "cache:looklookUsercenter:user:id:"
+	cacheLooklookUsercenterUserMobilePrefix = "cache:looklookUsercenter:user:mobile:"
+)
 
 type RegisterLogic struct {
 	ctx    context.Context
@@ -29,8 +35,12 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 }
 
 func (l *RegisterLogic) Register(in *usercenter.RegisterReq) (*usercenter.RegisterResp, error) {
-
-	user, err := l.svcCtx.UserModel.FindOneByMobile(l.ctx,in.Mobile)
+	//布隆过滤器
+	isExist, err := l.svcCtx.Filter.Exists([]byte(fmt.Sprintf("%s%v", cacheLooklookUsercenterUserMobilePrefix, in.Mobile)))
+	if isExist || err != nil {
+		return nil, errors.Wrapf(xerr.NewErrCode(xerr.DB_ERROR), "mobile:%s,err:%v", in.Mobile, err)
+	}
+	user, err := l.svcCtx.UserModel.FindOneByMobile(l.ctx, in.Mobile)
 	if err != nil && err != model.ErrNotFound {
 		return nil, errors.Wrapf(xerr.NewErrCode(xerr.DB_ERROR), "mobile:%s,err:%v", in.Mobile, err)
 	}
@@ -39,16 +49,16 @@ func (l *RegisterLogic) Register(in *usercenter.RegisterReq) (*usercenter.Regist
 	}
 
 	var userId int64
-	if err := l.svcCtx.UserModel.Trans(l.ctx,func(ctx context.Context,session sqlx.Session) error {
+	if err := l.svcCtx.UserModel.Trans(l.ctx, func(ctx context.Context, session sqlx.Session) error {
 		user := new(model.User)
 		user.Mobile = in.Mobile
 		if len(user.Nickname) == 0 {
-			user.Nickname = tool.Krand( 8, tool.KC_RAND_KIND_ALL)
+			user.Nickname = tool.Krand(8, tool.KC_RAND_KIND_ALL)
 		}
 		if len(in.Password) > 0 {
 			user.Password = tool.Md5ByString(in.Password)
 		}
-		insertResult, err := l.svcCtx.UserModel.Insert(ctx,session, user)
+		insertResult, err := l.svcCtx.UserModel.Insert(ctx, session, user)
 		if err != nil {
 			return errors.Wrapf(xerr.NewErrCode(xerr.DB_ERROR), "Register db user Insert err:%v,user:%+v", err, user)
 		}
@@ -62,17 +72,17 @@ func (l *RegisterLogic) Register(in *usercenter.RegisterReq) (*usercenter.Regist
 		userAuth.UserId = lastId
 		userAuth.AuthKey = in.AuthKey
 		userAuth.AuthType = in.AuthType
-		if _, err := l.svcCtx.UserAuthModel.Insert(ctx,session, userAuth); err != nil {
+		if _, err := l.svcCtx.UserAuthModel.Insert(ctx, session, userAuth); err != nil {
 			return errors.Wrapf(xerr.NewErrCode(xerr.DB_ERROR), "Register db user_auth Insert err:%v,userAuth:%v", err, userAuth)
 		}
 		return nil
 	}); err != nil {
 		return nil, err
 	}
-
+	l.svcCtx.Filter.Add([]byte(fmt.Sprintf("%s%v", cacheLooklookUsercenterUserMobilePrefix, in.Mobile)))
 	//2、Generate the token, so that the service doesn't call rpc internally
-	generateTokenLogic :=NewGenerateTokenLogic(l.ctx,l.svcCtx)
-	tokenResp,err:=generateTokenLogic.GenerateToken(&usercenter.GenerateTokenReq{
+	generateTokenLogic := NewGenerateTokenLogic(l.ctx, l.svcCtx)
+	tokenResp, err := generateTokenLogic.GenerateToken(&usercenter.GenerateTokenReq{
 		UserId: userId,
 	})
 	if err != nil {

@@ -31,7 +31,7 @@ service usercenter {
 
 //need login
 @server(
-	prefix: usercenter/v1
+	prefix: douyin/v1
 	group: user
 	jwt: JwtAuth
 )
@@ -39,7 +39,7 @@ service usercenter {
 	
 	@doc "get user info"
 	@handler detail
-	post /user/detail (UserInfoReq) returns (UserInfoResp)
+	post /user/ (UserInfoReq) returns (UserInfoResp)
 	
 	@doc "wechat mini auth"
 	@handler wxMiniAuth
